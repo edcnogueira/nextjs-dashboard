@@ -1,0 +1,71 @@
+name: 'Checks'
+
+on: [push, workflow_dispatch]
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20.13.1'
+            - name: Restore dependency cache
+              uses: actions/cache/restore@v4
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+
+            - name: Install pnpm
+              run: npm install -g pnpm
+            
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Save dependency cache
+              uses: actions/cache@v4
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+
+
+    lint:
+        needs: setup
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Restore dependency cache
+              uses: actions/cache/restore@v4
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+
+            - name: lint
+              run: pnpm run lint
+
+    build:
+        needs: [ setup, lint ]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Restore dependency cache
+              uses: actions/cache/restore@v4
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-${{ hashFiles('**/pnpm.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-
+
+            - name: Build
+              run: pnpm run build
