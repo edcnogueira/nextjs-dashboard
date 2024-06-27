@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Header>Dashboard</Header>
       <Container>
-        <span>início</span>
+        <span>Home</span>
       </Container>
     </>
   )

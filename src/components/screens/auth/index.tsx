@@ -13,11 +13,11 @@ import { Label } from '@/components/ui/label'
 
 export function Auth() {
   return (
-    <Card className="sm:w-1/3 mx-4 sm:mx-0">
+    <Card className="mx-4 sm:mx-0 sm:w-1/3">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Acesse sua conta</CardTitle>
+        <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>
-          Inicie com o Google ou entre com seu e-mail e senha.
+          Sign in with Google or enter your email and password.
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -51,7 +51,7 @@ export function Auth() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Entrar</Button>
+        <Button className="w-full">Login</Button>
       </CardFooter>
     </Card>
   )

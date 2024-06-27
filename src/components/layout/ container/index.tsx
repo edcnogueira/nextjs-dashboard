@@ -6,7 +6,7 @@ export function Container({ className, ...rest }: ContainerProps) {
   return (
     <div
       className={cn(
-        'p-2 md:p-4 bg-background m-2 rounded-md scroll-auto',
+        'm-2 scroll-auto rounded-md bg-background p-2 md:p-4',
         className,
       )}
       {...rest}

@@ -1,4 +1,9 @@
+'use client'
+
+import React from 'react'
+
 import { UserNav } from './userNav'
+import { SidebarMobile } from '@/components/sidebar'
 
 interface HeaderProps extends React.ComponentProps<'header'> {
   component?: React.ReactNode
@@ -7,10 +12,13 @@ interface HeaderProps extends React.ComponentProps<'header'> {
 export function Header({ children, component, ...rest }: HeaderProps) {
   return (
     <header
-      className="flex justify-between items-center border-b px-4 w-full py-4 bg-background"
+      className="flex w-full items-center justify-between border-b bg-background px-4 py-4"
       {...rest}
     >
-      <h3>{children}</h3>
+      <div className="flex items-center gap-2">
+        <SidebarMobile />
+        <h3>{children}</h3>
+      </div>
       <div>
         {component}
         <UserNav />
