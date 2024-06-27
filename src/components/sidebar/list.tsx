@@ -12,7 +12,7 @@ const Item = ({ children, className, icon, path, ...rest }: ItemProps) => {
     <Link href={path}>
       <li
         className={cn(
-          'flex items-center gap-2 bg-primary/25 hover:bg-primary/50 rounded-md p-2',
+          'flex items-center gap-2 rounded-md bg-primary/25 p-2 hover:bg-primary/50',
           className,
         )}
         {...rest}
@@ -26,10 +26,12 @@ const Item = ({ children, className, icon, path, ...rest }: ItemProps) => {
 
 export function List() {
   return (
-    <ul className="px-2 py-4">
-      <Item path="/" icon={<Home className="h-5 w-5" />}>
-        Início
-      </Item>
-    </ul>
+    <nav>
+      <ul className="px-2 py-4">
+        <Item path="/" icon={<Home className="h-5 w-5" />}>
+          Início
+        </Item>
+      </ul>
+    </nav>
   )
 }

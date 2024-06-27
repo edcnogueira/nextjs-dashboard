@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label'
 
 export function Auth() {
   return (
-    <Card className="sm:w-1/3 mx-4 sm:mx-0">
+    <Card className="mx-4 sm:mx-0 sm:w-1/3">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Acesse sua conta</CardTitle>
         <CardDescription>
