@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { MenuIcon } from 'lucide-react'
 import { UserNav } from './userNav'
 import { SidebarMobile } from '@/components/sidebar'
 
